@@ -16,28 +16,25 @@
  ***
  ****************************************************************************
  ****************************************************************************/
-#ifndef _GENLOCK_H_
-#define _GENLOCK_H_
-#define GENLOCK_UNLOCK 0
-#define GENLOCK_WRLOCK 1
+#ifndef __MSM_AUDIO_WMAPRO_H
+#define __MSM_AUDIO_WMAPRO_H
+#define AUDIO_GET_WMAPRO_CONFIG _IOR(AUDIO_IOCTL_MAGIC,   (AUDIO_MAX_COMMON_IOCTL_NUM+0), unsigned)
+#define AUDIO_SET_WMAPRO_CONFIG _IOW(AUDIO_IOCTL_MAGIC,   (AUDIO_MAX_COMMON_IOCTL_NUM+1), unsigned)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define GENLOCK_RDLOCK 2
-#define GENLOCK_NOBLOCK (1 << 0)
-struct genlock_lock {
- int fd;
+struct msm_audio_wmapro_config {
+ unsigned short armdatareqthr;
+ uint8_t validbitspersample;
+ uint8_t numchannels;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- int op;
- int flags;
- int timeout;
+ unsigned short formattag;
+ unsigned short samplingrate;
+ unsigned short avgbytespersecond;
+ unsigned short asfpacketlength;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ unsigned short channelmask;
+ unsigned short encodeopt;
+ unsigned short advancedencodeopt;
+ uint32_t advancedencodeopt2;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define GENLOCK_IOC_MAGIC 'G'
-#define GENLOCK_IOC_NEW _IO(GENLOCK_IOC_MAGIC, 0)
-#define GENLOCK_IOC_EXPORT _IOR(GENLOCK_IOC_MAGIC, 1,   struct genlock_lock)
-#define GENLOCK_IOC_ATTACH _IOW(GENLOCK_IOC_MAGIC, 2,   struct genlock_lock)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define GENLOCK_IOC_LOCK _IOW(GENLOCK_IOC_MAGIC, 3,   struct genlock_lock)
-#define GENLOCK_IOC_RELEASE _IO(GENLOCK_IOC_MAGIC, 4)
-#define GENLOCK_IOC_WAIT _IOW(GENLOCK_IOC_MAGIC, 5,   struct genlock_lock)
 #endif
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

@@ -23,8 +23,8 @@
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #endif
 #include <linux/types.h>
-#include <asm/sizes.h>
 #include <linux/ioctl.h>
+#include <linux/cdev.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #ifdef MSM_CAMERA_GCC
 #include <time.h>
@@ -32,72 +32,97 @@
 #include <linux/time.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #endif
-#define MAX_SENSOR_NUM 5
-#define MAX_SENSOR_NAME 32
 #define MSM_CAM_IOCTL_MAGIC 'm'
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_GET_SENSOR_INFO   _IOR(MSM_CAM_IOCTL_MAGIC, 1, struct msm_camsensor_info *)
 #define MSM_CAM_IOCTL_REGISTER_PMEM   _IOW(MSM_CAM_IOCTL_MAGIC, 2, struct msm_pmem_info *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_UNREGISTER_PMEM   _IOW(MSM_CAM_IOCTL_MAGIC, 3, unsigned)
 #define MSM_CAM_IOCTL_CTRL_COMMAND   _IOW(MSM_CAM_IOCTL_MAGIC, 4, struct msm_ctrl_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_CONFIG_VFE   _IOW(MSM_CAM_IOCTL_MAGIC, 5, struct msm_camera_vfe_cfg_cmd *)
 #define MSM_CAM_IOCTL_GET_STATS   _IOR(MSM_CAM_IOCTL_MAGIC, 6, struct msm_camera_stats_event_ctrl *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_GETFRAME   _IOR(MSM_CAM_IOCTL_MAGIC, 7, struct msm_camera_get_frame *)
 #define MSM_CAM_IOCTL_ENABLE_VFE   _IOW(MSM_CAM_IOCTL_MAGIC, 8, struct camera_enable_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_CTRL_CMD_DONE   _IOW(MSM_CAM_IOCTL_MAGIC, 9, struct camera_cmd *)
 #define MSM_CAM_IOCTL_CONFIG_CMD   _IOW(MSM_CAM_IOCTL_MAGIC, 10, struct camera_cmd *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_DISABLE_VFE   _IOW(MSM_CAM_IOCTL_MAGIC, 11, struct camera_enable_cmd *)
 #define MSM_CAM_IOCTL_PAD_REG_RESET2   _IOW(MSM_CAM_IOCTL_MAGIC, 12, struct camera_enable_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_VFE_APPS_RESET   _IOW(MSM_CAM_IOCTL_MAGIC, 13, struct camera_enable_cmd *)
 #define MSM_CAM_IOCTL_RELEASE_FRAME_BUFFER   _IOW(MSM_CAM_IOCTL_MAGIC, 14, struct camera_enable_cmd *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_RELEASE_STATS_BUFFER   _IOW(MSM_CAM_IOCTL_MAGIC, 15, struct msm_stats_buf *)
 #define MSM_CAM_IOCTL_AXI_CONFIG   _IOW(MSM_CAM_IOCTL_MAGIC, 16, struct msm_camera_vfe_cfg_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define MSM_CAM_IOCTL_GET_PICTURE   _IOW(MSM_CAM_IOCTL_MAGIC, 17, struct msm_camera_ctrl_cmd *)
+#define MSM_CAM_IOCTL_GET_PICTURE   _IOW(MSM_CAM_IOCTL_MAGIC, 17, struct msm_frame *)
 #define MSM_CAM_IOCTL_SET_CROP   _IOW(MSM_CAM_IOCTL_MAGIC, 18, struct crop_info *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_PICT_PP   _IOW(MSM_CAM_IOCTL_MAGIC, 19, uint8_t *)
 #define MSM_CAM_IOCTL_PICT_PP_DONE   _IOW(MSM_CAM_IOCTL_MAGIC, 20, struct msm_snapshot_pp_status *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_SENSOR_IO_CFG   _IOW(MSM_CAM_IOCTL_MAGIC, 21, struct sensor_cfg_data *)
 #define MSM_CAM_IOCTL_FLASH_LED_CFG   _IOW(MSM_CAM_IOCTL_MAGIC, 22, unsigned *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_UNBLOCK_POLL_FRAME   _IO(MSM_CAM_IOCTL_MAGIC, 23)
 #define MSM_CAM_IOCTL_CTRL_COMMAND_2   _IOW(MSM_CAM_IOCTL_MAGIC, 24, struct msm_ctrl_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_AF_CTRL   _IOR(MSM_CAM_IOCTL_MAGIC, 25, struct msm_ctrl_cmt_t *)
 #define MSM_CAM_IOCTL_AF_CTRL_DONE   _IOW(MSM_CAM_IOCTL_MAGIC, 26, struct msm_ctrl_cmt_t *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_CONFIG_VPE   _IOW(MSM_CAM_IOCTL_MAGIC, 27, struct msm_camera_vpe_cfg_cmd *)
 #define MSM_CAM_IOCTL_AXI_VPE_CONFIG   _IOW(MSM_CAM_IOCTL_MAGIC, 28, struct msm_camera_vpe_cfg_cmd *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_STROBE_FLASH_CFG   _IOW(MSM_CAM_IOCTL_MAGIC, 29, uint32_t *)
 #define MSM_CAM_IOCTL_STROBE_FLASH_CHARGE   _IOW(MSM_CAM_IOCTL_MAGIC, 30, uint32_t *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_STROBE_FLASH_RELEASE   _IO(MSM_CAM_IOCTL_MAGIC, 31)
 #define MSM_CAM_IOCTL_FLASH_CTRL   _IOW(MSM_CAM_IOCTL_MAGIC, 32, struct flash_ctrl_data *)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_ERROR_CONFIG   _IOW(MSM_CAM_IOCTL_MAGIC, 33, uint32_t *)
 #define MSM_CAM_IOCTL_ABORT_CAPTURE   _IO(MSM_CAM_IOCTL_MAGIC, 34)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_IOCTL_SET_FD_ROI   _IOW(MSM_CAM_IOCTL_MAGIC, 35, struct fd_roi_info *)
 #define MSM_CAM_IOCTL_GET_CAMERA_INFO   _IOR(MSM_CAM_IOCTL_MAGIC, 36, struct msm_camera_info *)
+#define MSM_CAM_IOCTL_UNBLOCK_POLL_PIC_FRAME   _IO(MSM_CAM_IOCTL_MAGIC, 37)
+#define MSM_CAM_IOCTL_RELEASE_PIC_BUFFER   _IOW(MSM_CAM_IOCTL_MAGIC, 38, struct camera_enable_cmd *)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define MSM_CAM_IOCTL_PUT_ST_FRAME   _IOW(MSM_CAM_IOCTL_MAGIC, 37, struct msm_camera_st_frame *)
-#define MSM_CAM_IOCTL_SET_CONFIG_CAMERA_ZSL   _IOW(MSM_CAM_IOCTL_MAGIC, 41, bool *)
-#define MSM_CAM_IOCTL_EFFECT_STATE_CFG   _IOW(MSM_CAM_IOCTL_MAGIC, 43, int32_t *)
+#define MSM_CAM_IOCTL_PUT_ST_FRAME   _IOW(MSM_CAM_IOCTL_MAGIC, 39, struct msm_camera_st_frame *)
+#define MSM_CAM_IOCTL_GET_CONFIG_INFO   _IOR(MSM_CAM_IOCTL_MAGIC, 40, struct msm_cam_config_dev_info *)
+#define MSM_CAM_IOCTL_V4L2_EVT_NOTIFY   _IOR(MSM_CAM_IOCTL_MAGIC, 41, struct v4l2_event *)
+#define MSM_CAM_IOCTL_SET_MEM_MAP_INFO   _IOR(MSM_CAM_IOCTL_MAGIC, 42, struct msm_mem_map_info *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_CAM_IOCTL_ACTUATOR_IO_CFG   _IOW(MSM_CAM_IOCTL_MAGIC, 43, struct msm_actuator_cfg_data *)
+#define MSM_CAM_IOCTL_MCTL_POST_PROC   _IOW(MSM_CAM_IOCTL_MAGIC, 44, struct msm_mctl_post_proc_cmd *)
+#define MSM_CAM_IOCTL_RESERVE_FREE_FRAME   _IOW(MSM_CAM_IOCTL_MAGIC, 45, struct msm_cam_evt_divert_frame *)
+#define MSM_CAM_IOCTL_RELEASE_FREE_FRAME   _IOR(MSM_CAM_IOCTL_MAGIC, 46, struct msm_cam_evt_divert_frame *)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_mctl_pp_cmd {
+ int32_t id;
+ uint16_t length;
+ void *value;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_mctl_post_proc_cmd {
+ int32_t type;
+ struct msm_mctl_pp_cmd cmd;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
 #define MSM_CAMERA_LED_OFF 0
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAMERA_LED_LOW 1
 #define MSM_CAMERA_LED_HIGH 2
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_CAMERA_LED_INIT 3
+#define MSM_CAMERA_LED_RELEASE 4
 #define MSM_CAMERA_STROBE_FLASH_NONE 0
 #define MSM_CAMERA_STROBE_FLASH_XENON 1
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_MAX_CAMERA_SENSORS 5
+#define MAX_SENSOR_NAME 32
+#define MSM_MAX_CAMERA_CONFIGS 2
 #define PP_SNAP 0x01
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define PP_RAW_SNAP ((0x01)<<1)
 #define PP_PREV ((0x01)<<2)
 #define PP_MASK (PP_SNAP|PP_RAW_SNAP|PP_PREV)
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_CTRL_CMD_DONE 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_SENSOR_VFE_CMD 1
+#define MAX_PLANES 8
 struct msm_ctrl_cmd {
  uint16_t type;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
@@ -107,38 +132,88 @@ struct msm_ctrl_cmd {
  uint32_t timeout_ms;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int resp_fd;
+ int vnode_id;
+ uint32_t stream_type;
+ int config_ident;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct msm_cam_evt_msg {
  unsigned short type;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  unsigned short msg_id;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  unsigned int len;
  uint32_t frame_id;
  void *data;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_pp_frame_sp {
+ unsigned long phy_addr;
+ uint32_t y_off;
+ uint32_t cbcr_off;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t length;
+ int32_t fd;
+ uint32_t addr_offset;
+ unsigned long vaddr;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
-struct msm_isp_evt_msg {
- unsigned short type;
- unsigned short msg_id;
+struct msm_pp_frame_mp {
+ unsigned long phy_addr;
+ uint32_t data_offset;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- unsigned int len;
- uint8_t data[48];
+ uint32_t length;
+ int32_t fd;
+ uint32_t addr_offset;
+ unsigned long vaddr;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
-struct msm_vpe_evt_msg {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- unsigned short type;
- unsigned short msg_id;
- unsigned int len;
+struct msm_pp_frame {
+ uint32_t handle;
  uint32_t frame_id;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- void *data;
-};
-struct msm_isp_stats_event_ctrl {
- unsigned short resptype;
+ int path;
+ unsigned short image_type;
+ unsigned short num_planes;
+ struct timeval timestamp;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  union {
- struct msm_isp_evt_msg isp_msg;
+ struct msm_pp_frame_sp sp;
+ struct msm_pp_frame_mp mp[MAX_PLANES];
+ };
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_cam_evt_divert_frame {
+ unsigned short image_mode;
+ unsigned short op_mode;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ unsigned short inst_idx;
+ unsigned short node_idx;
+ struct msm_pp_frame frame;
+ int do_pp;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_mctl_pp_cmd_ack_event {
+ uint32_t cmd;
+ int status;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t cookie;
+};
+struct msm_mctl_pp_event_info {
+ int32_t event;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ union {
+ struct msm_mctl_pp_cmd_ack_event ack;
+ };
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_isp_event_ctrl {
+ unsigned short resptype;
+ union {
+ struct msm_cam_evt_msg isp_msg;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  struct msm_ctrl_cmd ctrl;
+ struct msm_cam_evt_divert_frame div_frame;
+ struct msm_mctl_pp_event_info pp_event_info;
  } isp_data;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
@@ -148,7 +223,12 @@ struct msm_isp_stats_event_ctrl {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_CAM_RESP_STEREO_OP_2 3
 #define MSM_CAM_RESP_V4L2 4
-#define MSM_CAM_RESP_MAX 5
+#define MSM_CAM_RESP_DIV_FRAME_EVT_MSG 5
+#define MSM_CAM_RESP_DONE_EVENT 6
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_CAM_RESP_MCTL_PP_EVENT 7
+#define MSM_CAM_RESP_MAX 8
+#define MSM_CAM_APP_NOTIFY_EVENT 0
 struct msm_stats_event_ctrl {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int resptype;
@@ -219,9 +299,14 @@ struct msm_camera_cfg_cmd {
 #define CMD_STATS_CS_ENABLE 40
 #define CMD_VPE 41
 #define CMD_AXI_CFG_VPE 42
-#define CMD_AXI_CFG_SNAP_VPE 43
+#define CMD_AXI_CFG_ZSL 43
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define CMD_AXI_CFG_SNAP_THUMB_VPE 44
+#define CMD_AXI_CFG_SNAP_VPE 44
+#define CMD_AXI_CFG_SNAP_THUMB_VPE 45
+#define CMD_CONFIG_PING_ADDR 46
+#define CMD_CONFIG_PONG_ADDR 47
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CMD_CONFIG_FREE_BUF_ADDR 48
 struct msm_vfe_cfg_cmd {
  int cmd_type;
  uint16_t length;
@@ -313,158 +398,706 @@ struct outputCfg {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define OUTPUT_1_AND_CAMIF_TO_AXI_VIA_OUTPUT_2 5
 #define OUTPUT_2_AND_CAMIF_TO_AXI_VIA_OUTPUT_1 6
-#define LAST_AXI_OUTPUT_MODE_ENUM = OUTPUT_2_AND_CAMIF_TO_AXI_VIA_OUTPUT_1 7
-#define MSM_FRAME_PREV_1 0
+#define OUTPUT_1_2_AND_3 7
+#define LAST_AXI_OUTPUT_MODE_ENUM = OUTPUT_1_2_AND_3 7
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_FRAME_PREV_1 0
 #define MSM_FRAME_PREV_2 1
 #define MSM_FRAME_ENC 2
 #define OUTPUT_TYPE_P (1<<0)
-#define OUTPUT_TYPE_T (1<<1)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define OUTPUT_TYPE_T (1<<1)
 #define OUTPUT_TYPE_S (1<<2)
 #define OUTPUT_TYPE_V (1<<3)
 #define OUTPUT_TYPE_L (1<<4)
-#define OUTPUT_TYPE_ST_L (1<<5)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define OUTPUT_TYPE_ST_L (1<<5)
 #define OUTPUT_TYPE_ST_R (1<<6)
 #define OUTPUT_TYPE_ST_D (1<<7)
 struct fd_roi_info {
- void *info;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ void *info;
  int info_len;
 };
+struct msm_mem_map_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t cookie;
+ uint32_t length;
+ uint32_t mem_type;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_MEM_MMAP 0
+#define MSM_MEM_USERPTR 1
+#define MSM_PLANE_MAX 8
+#define MSM_PLANE_Y 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_PLANE_UV 1
 struct msm_frame {
  struct timespec ts;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int path;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int type;
  unsigned long buffer;
  uint32_t phy_offset;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  uint32_t y_off;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  uint32_t cbcr_off;
  int fd;
  void *cropinfo;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int croplen;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  uint32_t error_code;
  struct fd_roi_info roi_info;
  uint32_t frame_id;
+ int stcam_quality_ind;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t stcam_conv_value;
 };
 enum msm_st_frame_packing {
  SIDE_BY_SIDE_HALF,
- SIDE_BY_SIDE_FULL,
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ SIDE_BY_SIDE_FULL,
  TOP_DOWN_HALF,
  TOP_DOWN_FULL,
 };
-struct msm_st_crop {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_st_crop {
  uint32_t in_w;
  uint32_t in_h;
  uint32_t out_w;
- uint32_t out_h;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t out_h;
 };
 struct msm_st_half {
  uint32_t buf_y_off;
- uint32_t buf_cbcr_off;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t buf_cbcr_off;
  uint32_t buf_y_stride;
  uint32_t buf_cbcr_stride;
  uint32_t pix_x_off;
- uint32_t pix_y_off;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t pix_y_off;
  struct msm_st_crop stCropInfo;
 };
 struct msm_st_frame {
- struct msm_frame buf_info;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct msm_frame buf_info;
  int type;
  enum msm_st_frame_packing packing;
  struct msm_st_half L;
- struct msm_st_half R;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct msm_st_half R;
  int frame_id;
 };
 #define MSM_CAMERA_ERR_MASK (0xFFFFFFFF & 1)
-struct msm_stats_buf {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct stats_buff {
+ unsigned long buff;
+ int fd;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_stats_buf {
+ uint8_t awb_ymin;
+ struct stats_buff aec;
+ struct stats_buff awb;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct stats_buff af;
+ struct stats_buff ihist;
+ struct stats_buff rs;
+ struct stats_buff cs;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct stats_buff skin;
  int type;
+ uint32_t status_bits;
  unsigned long buffer;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int fd;
  uint32_t frame_id;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
+#define MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_EXT_CAPTURE_MODE_PREVIEW   (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+1)
+#define MSM_V4L2_EXT_CAPTURE_MODE_VIDEO   (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+2)
+#define MSM_V4L2_EXT_CAPTURE_MODE_MAIN (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+3)
+#define MSM_V4L2_EXT_CAPTURE_MODE_THUMBNAIL   (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+4)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_EXT_CAPTURE_MODE_RAW   (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+5)
+#define MSM_V4L2_EXT_CAPTURE_MODE_MAX (MSM_V4L2_EXT_CAPTURE_MODE_DEFAULT+6)
+#define MSM_V4L2_PID_MOTION_ISO V4L2_CID_PRIVATE_BASE
+#define MSM_V4L2_PID_EFFECT (V4L2_CID_PRIVATE_BASE+1)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_PID_HJR (V4L2_CID_PRIVATE_BASE+2)
+#define MSM_V4L2_PID_LED_MODE (V4L2_CID_PRIVATE_BASE+3)
+#define MSM_V4L2_PID_PREP_SNAPSHOT (V4L2_CID_PRIVATE_BASE+4)
+#define MSM_V4L2_PID_EXP_METERING (V4L2_CID_PRIVATE_BASE+5)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_PID_ISO (V4L2_CID_PRIVATE_BASE+6)
+#define MSM_V4L2_PID_CAM_MODE (V4L2_CID_PRIVATE_BASE+7)
+#define MSM_V4L2_PID_LUMA_ADAPTATION (V4L2_CID_PRIVATE_BASE+8)
+#define MSM_V4L2_PID_BEST_SHOT (V4L2_CID_PRIVATE_BASE+9)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_PID_FOCUS_MODE (V4L2_CID_PRIVATE_BASE+10)
+#define MSM_V4L2_PID_BL_DETECTION (V4L2_CID_PRIVATE_BASE+11)
+#define MSM_V4L2_PID_SNOW_DETECTION (V4L2_CID_PRIVATE_BASE+12)
+#define MSM_V4L2_PID_CTRL_CMD (V4L2_CID_PRIVATE_BASE+13)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_PID_EVT_SUB_INFO (V4L2_CID_PRIVATE_BASE+14)
+#define MSM_V4L2_PID_STROBE_FLASH (V4L2_CID_PRIVATE_BASE+15)
+#define MSM_V4L2_PID_MMAP_ENTRY (V4L2_CID_PRIVATE_BASE+16)
+#define MSM_V4L2_PID_MMAP_INST (V4L2_CID_PRIVATE_BASE+17)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_PID_MAX MSM_V4L2_PID_MMAP_INST
+#define MSM_V4L2_CAM_OP_DEFAULT 0
+#define MSM_V4L2_CAM_OP_PREVIEW (MSM_V4L2_CAM_OP_DEFAULT+1)
+#define MSM_V4L2_CAM_OP_VIDEO (MSM_V4L2_CAM_OP_DEFAULT+2)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_CAM_OP_CAPTURE (MSM_V4L2_CAM_OP_DEFAULT+3)
+#define MSM_V4L2_CAM_OP_ZSL (MSM_V4L2_CAM_OP_DEFAULT+4)
+#define MSM_V4L2_CAM_OP_RAW (MSM_V4L2_CAM_OP_DEFAULT+5)
 #define MSM_V4L2_VID_CAP_TYPE 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_V4L2_STREAM_ON 1
 #define MSM_V4L2_STREAM_OFF 2
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_V4L2_SNAPSHOT 3
 #define MSM_V4L2_QUERY_CTRL 4
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_V4L2_GET_CTRL 5
 #define MSM_V4L2_SET_CTRL 6
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define MSM_V4L2_QUERY 7
 #define MSM_V4L2_GET_CROP 8
-#define MSM_V4L2_SET_CROP 9
-#define MSM_V4L2_MAX 10
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_SET_CROP 9
+#define MSM_V4L2_OPEN 10
+#define MSM_V4L2_CLOSE 11
+#define MSM_V4L2_SET_CTRL_CMD 12
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define MSM_V4L2_EVT_SUB_MASK 13
+#define MSM_V4L2_MAX 14
 #define V4L2_CAMERA_EXIT 43
 struct crop_info {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  void *info;
  int len;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct msm_postproc {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int ftnum;
  struct msm_frame fthumnail;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int fmnum;
  struct msm_frame fmain;
-};
-enum flash_type {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_snapshot_pp_status {
+ void *status;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_MODE 0
+#define CFG_SET_EFFECT 1
+#define CFG_START 2
+#define CFG_PWR_UP 3
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_PWR_DOWN 4
+#define CFG_WRITE_EXPOSURE_GAIN 5
+#define CFG_SET_DEFAULT_FOCUS 6
+#define CFG_MOVE_FOCUS 7
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_REGISTER_TO_REAL_GAIN 8
+#define CFG_REAL_TO_REGISTER_GAIN 9
+#define CFG_SET_FPS 10
+#define CFG_SET_PICT_FPS 11
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_BRIGHTNESS 12
+#define CFG_SET_CONTRAST 13
+#define CFG_SET_ZOOM 14
+#define CFG_SET_EXPOSURE_MODE 15
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_WB 16
+#define CFG_SET_ANTIBANDING 17
+#define CFG_SET_EXP_GAIN 18
+#define CFG_SET_PICT_EXP_GAIN 19
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_LENS_SHADING 20
+#define CFG_GET_PICT_FPS 21
+#define CFG_GET_PREV_L_PF 22
+#define CFG_GET_PREV_P_PL 23
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_GET_PICT_L_PF 24
+#define CFG_GET_PICT_P_PL 25
+#define CFG_GET_AF_MAX_STEPS 26
+#define CFG_GET_PICT_MAX_EXP_LC 27
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SEND_WB_INFO 28
+#define CFG_SENSOR_INIT 29
+#define CFG_GET_3D_CALI_DATA 30
+#define CFG_GET_CALIB_DATA 31
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_GET_OUTPUT_INFO 32
+#define CFG_GET_EEPROM_DATA 33
+#define CFG_SET_ACTUATOR_INFO 34
+#define CFG_GET_ACTUATOR_INFO 35
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_SHARPNESS 36
+#define CFG_SET_SATURATION 37
+#define CFG_SET_OV_LSC_RAW_CAPTURE 38
+#define CFG_SET_ISO 39
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_SET_COORDINATE 40
+#define CFG_RUN_AUTO_FOCUS 41
+#define CFG_CANCEL_AUTO_FOCUS 42
+#define CFG_GET_EXP_FOR_LED 43
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_UPDATE_AEC_FOR_LED 44
+#define CFG_SET_FRONT_CAMERA_MODE 45
+#define CFG_SET_QCT_LSC_RAW_CAPTURE 46
+#define CFG_SET_QTR_SIZE_MODE 47
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_GET_AF_STATE 48
+#define CFG_SET_DMODE 49
+#define CFG_SET_CALIBRATION 50
+#define CFG_SET_AF_MODE 51
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_GET_SP3D_L_FRAME 52
+#define CFG_GET_SP3D_R_FRAME 53
+#define CFG_SET_FLASHLIGHT 54
+#define CFG_SET_FLASHLIGHT_EXP_DIV 55
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_GET_ISO 56
+#define CFG_GET_EXP_GAIN 57
+#define CFG_SET_FRAMERATE 58
+#define CFG_MAX 59
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CFG_I2C_IOCTL_R_OTP 70
+#define MOVE_NEAR 0
+#define MOVE_FAR 1
+#define SENSOR_PREVIEW_MODE 0  
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define SENSOR_SNAPSHOT_MODE 1  
+#define SENSOR_RAW_SNAPSHOT_MODE 2  
+#define SENSOR_HFR_60FPS_MODE 3
+#define SENSOR_HFR_90FPS_MODE 4
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define SENSOR_HFR_120FPS_MODE 5
+#define SENSOR_QTR_SIZE 0
+#define SENSOR_FULL_SIZE 1
+#define SENSOR_QVGA_SIZE 2
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define SENSOR_INVALID_SIZE 3
+#define CAMERA_EFFECT_OFF 0
+#define CAMERA_EFFECT_MONO 1
+#define CAMERA_EFFECT_NEGATIVE 2
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CAMERA_EFFECT_SOLARIZE 3
+#define CAMERA_EFFECT_SEPIA 4
+#define CAMERA_EFFECT_POSTERIZE 5
+#define CAMERA_EFFECT_WHITEBOARD 6
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CAMERA_EFFECT_BLACKBOARD 7
+#define CAMERA_EFFECT_AQUA 8
+#define CAMERA_EFFECT_EMBOSS 9
+#define CAMERA_EFFECT_SKETCH 10
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define CAMERA_EFFECT_NEON 11
+#define CAMERA_EFFECT_MAX 12
+struct sensor_pict_fps {
+ uint16_t prevfps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t pictfps;
+};
+struct exp_gain_cfg {
+ uint16_t gain;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t line;
+};
+struct focus_cfg {
+ int32_t steps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ int dir;
+};
+struct fps_cfg {
+ uint16_t f_mult;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t fps_div;
+ uint32_t pict_fps_div;
+};
+struct wb_info_cfg {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t red_gain;
+ uint16_t green_gain;
+ uint16_t blue_gain;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct sensor_3d_exp_cfg {
+ uint16_t gain;
+ uint32_t line;
+ uint16_t r_gain;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t b_gain;
+ uint16_t gr_gain;
+ uint16_t gb_gain;
+ uint16_t gain_adjust;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct sensor_3d_cali_data_t{
+ unsigned char left_p_matrix[3][4][8];
+ unsigned char right_p_matrix[3][4][8];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ unsigned char square_len[8];
+ unsigned char focal_len[8];
+ unsigned char pixel_pitch[8];
+ uint16_t left_r;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t left_b;
+ uint16_t left_gb;
+ uint16_t left_af_far;
+ uint16_t left_af_mid;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t left_af_short;
+ uint16_t left_af_5um;
+ uint16_t left_af_50up;
+ uint16_t left_af_50down;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t right_r;
+ uint16_t right_b;
+ uint16_t right_gb;
+ uint16_t right_af_far;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t right_af_mid;
+ uint16_t right_af_short;
+ uint16_t right_af_5um;
+ uint16_t right_af_50up;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t right_af_50down;
+};
+struct sensor_init_cfg {
+ uint8_t prev_res;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint8_t pict_res;
+};
+struct sensor_calib_data {
+ uint16_t r_over_g;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t b_over_g;
+ uint16_t gr_over_gb;
+ uint16_t macro_2_inf;
+ uint16_t inf_2_macro;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t stroke_amt;
+ uint16_t af_pos_1m;
+ uint16_t af_pos_inf;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum msm_sensor_resolution_t {
+ MSM_SENSOR_RES_FULL,
+ MSM_SENSOR_RES_QTR,
+ MSM_SENSOR_RES_VIDEO,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ MSM_SENSOR_RES_VIDEO_HFR,
+ MSM_SENSOR_RES_4,
+ MSM_SENSOR_RES_5,
+ MSM_SENSOR_RES_6,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ MSM_SENSOR_RES_7,
+ MSM_SENSOR_INVALID_RES,
+};
+struct msm_sensor_output_info_t {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t x_output;
+ uint16_t y_output;
+ uint16_t line_length_pclk;
+ uint16_t frame_length_lines;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t vt_pixel_clk;
+ uint32_t op_pixel_clk;
+ uint16_t binning_factor;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct sensor_output_info_t {
+ struct msm_sensor_output_info_t *output_info;
+ uint16_t num_info;
+ uint16_t vert_offset;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t min_vert;
+ int mirror_flip;
+};
+struct sensor_eeprom_data_t {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ void *eeprom_data;
+ uint16_t index;
+};
+enum antibanding_mode{
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_ANTI_BANDING_50HZ,
+ CAMERA_ANTI_BANDING_60HZ,
+ CAMERA_ANTI_BANDING_AUTO,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum brightness_t{
+ CAMERA_BRIGHTNESS_N3,
+ CAMERA_BRIGHTNESS_N2,
+ CAMERA_BRIGHTNESS_N1,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_BRIGHTNESS_D,
+ CAMERA_BRIGHTNESS_P1,
+ CAMERA_BRIGHTNESS_P2,
+ CAMERA_BRIGHTNESS_P3,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_BRIGHTNESS_P4,
+ CAMERA_BRIGHTNESS_N4,
+};
+enum frontcam_t{
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_MIRROR,
+ CAMERA_REVERSE,
+ CAMERA_PORTRAIT_REVERSE,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum wb_mode{
+ CAMERA_AWB_AUTO,
+ CAMERA_AWB_CLOUDY,
+ CAMERA_AWB_INDOOR_HOME,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_AWB_INDOOR_OFFICE,
+ CAMERA_AWB_SUNNY,
+};
+enum iso_mode{
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_ISO_AUTO = 0,
+ CAMERA_ISO_DEBLUR,
+ CAMERA_ISO_100,
+ CAMERA_ISO_200,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_ISO_400,
+ CAMERA_ISO_800,
+ CAMERA_ISO_1250,
+ CAMERA_ISO_1600,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_ISO_MAX
+};
+enum sharpness_mode{
+ CAMERA_SHARPNESS_X0,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_SHARPNESS_X1,
+ CAMERA_SHARPNESS_X2,
+ CAMERA_SHARPNESS_X3,
+ CAMERA_SHARPNESS_X4,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_SHARPNESS_X5,
+ CAMERA_SHARPNESS_X6,
+};
+enum saturation_mode{
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_SATURATION_X0,
+ CAMERA_SATURATION_X05,
+ CAMERA_SATURATION_X1,
+ CAMERA_SATURATION_X15,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_SATURATION_X2,
+};
+enum contrast_mode{
+ CAMERA_CONTRAST_P2,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ CAMERA_CONTRAST_P1,
+ CAMERA_CONTRAST_D,
+ CAMERA_CONTRAST_N1,
+ CAMERA_CONTRAST_N2,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum qtr_size_mode{
+ NORMAL_QTR_SIZE_MODE,
+ LARGER_QTR_SIZE_MODE,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+enum sensor_af_mode{
+ SENSOR_AF_MODE_AUTO,
+ SENSOR_AF_MODE_NORMAL,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ SENSOR_AF_MODE_MACRO,
+};
+struct fuse_id{
+ uint32_t fuse_id_word1;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t fuse_id_word2;
+ uint32_t fuse_id_word3;
+ uint32_t fuse_id_word4;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct sensor_cfg_data {
+ int cfgtype;
+ int mode;
+ int rs;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint8_t max_steps;
+ union {
+ int8_t effect;
+ uint8_t lens_shading;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t prevl_pf;
+ uint16_t prevp_pl;
+ uint16_t pictl_pf;
+ uint16_t pictp_pl;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t pict_max_exp_lc;
+ uint16_t p_fps;
+ struct sensor_init_cfg init_info;
+ struct sensor_pict_fps gfps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct exp_gain_cfg exp_gain;
+ struct focus_cfg focus;
+ struct fps_cfg fps;
+ struct wb_info_cfg wb_info;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct sensor_3d_exp_cfg sensor_3d_exp;
+ struct sensor_calib_data calib_info;
+ struct sensor_output_info_t output_info;
+ struct sensor_eeprom_data_t eeprom_data;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct fuse_id fuse;
+ enum antibanding_mode antibanding_value;
+ enum brightness_t brightness_value;
+ enum frontcam_t frontcam_value;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ enum wb_mode wb_value;
+ enum iso_mode iso_value;
+ enum sharpness_mode sharpness_value;
+ enum saturation_mode saturation_value;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ enum contrast_mode contrast_value;
+ enum qtr_size_mode qtr_size_mode_value;
+ enum sensor_af_mode af_mode_value;
+ } cfg;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_actuator_move_params_t {
+ int8_t dir;
+ int32_t num_steps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_actuator_set_info_t {
+ uint32_t total_steps;
+ uint16_t gross_steps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint16_t fine_steps;
+};
+struct msm_actuator_get_info_t {
+ uint32_t focal_length_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t focal_length_den;
+ uint32_t f_number_num;
+ uint32_t f_number_den;
+ uint32_t f_pix_num;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint32_t f_pix_den;
+ uint32_t total_f_dist_num;
+ uint32_t total_f_dist_den;
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_actuator_cfg_data {
+ int cfgtype;
+ uint8_t is_af_supported;
+ union {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct msm_actuator_move_params_t move;
+ struct msm_actuator_set_info_t set_info;
+ struct msm_actuator_get_info_t get_info;
+ } cfg;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct sensor_large_data {
+ int cfgtype;
+ union {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct sensor_3d_cali_data_t sensor_3d_cali_data;
+ } data;
+};
+enum sensor_type_t {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ BAYER,
+ YUV,
+ JPEG_SOC,
+};
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum flash_type {
  LED_FLASH,
  STROBE_FLASH,
 };
-enum strobe_flash_ctrl_type {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+enum strobe_flash_ctrl_type {
  STROBE_FLASH_CTRL_INIT,
  STROBE_FLASH_CTRL_CHARGE,
  STROBE_FLASH_CTRL_RELEASE
-};
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
 struct strobe_flash_ctrl_data {
  enum strobe_flash_ctrl_type type;
  int charge_en;
-};
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-struct flash_ctrl_data {
- int flashtype;
- union {
- int led_state;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- struct strobe_flash_ctrl_data strobe_ctrl;
- } ctrl_data;
-};
-struct msm_snapshot_pp_status {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- void *status;
-};
-struct msm_camsensor_info {
- char name[MAX_SENSOR_NAME];
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
- uint8_t flash_enabled;
- int8_t total_steps;
 };
 struct msm_camera_info {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
  int num_cameras;
- uint8_t has_3d_support[MAX_SENSOR_NUM];
- uint8_t is_internal_cam[MAX_SENSOR_NUM];
+ uint8_t has_3d_support[MSM_MAX_CAMERA_SENSORS];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint8_t is_internal_cam[MSM_MAX_CAMERA_SENSORS];
+ uint32_t s_mount_angle[MSM_MAX_CAMERA_SENSORS];
+ const char *video_dev_name[MSM_MAX_CAMERA_SENSORS];
+ enum sensor_type_t sensor_type[MSM_MAX_CAMERA_SENSORS];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+struct msm_cam_config_dev_info {
+ int num_config_nodes;
+ const char *config_dev_name[MSM_MAX_CAMERA_CONFIGS];
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ int config_dev_id[MSM_MAX_CAMERA_CONFIGS];
+};
+struct flash_ctrl_data {
+ int flashtype;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ union {
+ int led_state;
+ struct strobe_flash_ctrl_data strobe_ctrl;
+ } ctrl_data;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+#define GET_NAME 0
+#define GET_PREVIEW_LINE_PER_FRAME 1
+#define GET_PREVIEW_PIXELS_PER_LINE 2
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define GET_SNAPSHOT_LINE_PER_FRAME 3
+#define GET_SNAPSHOT_PIXELS_PER_LINE 4
+#define GET_SNAPSHOT_FPS 5
+#define GET_SNAPSHOT_MAX_EP_LINE_CNT 6
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct msm_camsensor_info {
+ char name[MAX_SENSOR_NAME];
+ uint8_t flash_enabled;
+ int8_t total_steps;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint8_t support_3d;
+};
+#define V4L2_SINGLE_PLANE 0
+#define V4L2_MULTI_PLANE_Y 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define V4L2_MULTI_PLANE_CBCR 1
+#define V4L2_MULTI_PLANE_CB 1
+#define V4L2_MULTI_PLANE_CR 2
+struct plane_data {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ int plane_id;
+ uint32_t offset;
+ unsigned long size;
 };
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+struct img_plane_info {
+ uint32_t width;
+ uint32_t height;
+ uint32_t pixelformat;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ uint8_t buffer_type;
+ uint8_t output_port;
+ uint32_t ext_mode;
+ uint8_t num_planes;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+ struct plane_data plane[MAX_PLANES];
+ uint8_t vpe_can_use;
+};
 #endif
-
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
