@@ -53,7 +53,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
-    hwcomposer.msm8660 \
+    hwcomposer.msm8660
 
 # OMX
 PRODUCT_PACKAGES += \
