@@ -69,12 +69,9 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxAmrEnc
 
-# FM Radio
+# WiFi
 PRODUCT_PACKAGES += \
-    FmRadioReceiver
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
+    libnetcmdiface
 
 # HDMI
 PRODUCT_PACKAGES += \
