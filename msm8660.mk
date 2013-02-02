@@ -91,7 +91,7 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # Lights
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \	
     lights.msm8660
 
 # Media configuration
