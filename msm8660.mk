@@ -39,9 +39,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
+    audio_policy.conf \
     audio.primary.msm8660 \
     libaudioutils \
-    audio.usb.default
+    audio.usb.default \
+    audio_policy.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -51,7 +53,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
-    hwcomposer.msm8660
+    hwcomposer.msm8660 \
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -67,6 +69,13 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxEvrcEnc \
     libOmxAmrEnc
+
+# FM Radio
+PRODUCT_PACKAGES += \
+    FmRadioReceiver
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
 
 # HDMI
 PRODUCT_PACKAGES += \
@@ -92,8 +101,7 @@ PRODUCT_PACKAGES += \
 # Media configuration
 PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    device/htc/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
+    device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # MSM8660 firmware
 PRODUCT_COPY_FILES += \
