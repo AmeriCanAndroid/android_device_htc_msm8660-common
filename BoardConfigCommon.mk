@@ -21,9 +21,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/htc/msm8660-common/include
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/htc/shooteru
-
 # Platform
 TARGET_BOARD_PLATFORM := msm8660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
